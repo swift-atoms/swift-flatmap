@@ -1,5 +1,3 @@
-/// Selects a subsequent computation from a value, independently of how that
-/// computation is executed. A domain adapter supplies the execution semantics.
 @frozen
 public struct FlatMap<
     Source: ~Copyable & ~Escapable,
