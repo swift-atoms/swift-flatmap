@@ -6,11 +6,11 @@ let package = Package(
     products: [.library(name: "FlatMap", targets: ["FlatMap"])],
     targets: [
         .target(name: "FlatMap"),
-        .testTarget(name: "FlatMap Tests", dependencies: ["FlatMap"]),
+        .testTarget(name: "FlatMap Tests", dependencies: [.target(name: "FlatMap")]),
     ],
     swiftLanguageModes: [.v6]
 )
-for target in package.targets where ![.system, .binary, .plugin].contains(target.type) {
+for target in package.targets where ![.system, .binary, .plugin, .macro].contains(target.type) {
     target.swiftSettings = (target.swiftSettings ?? []) + [
         .strictMemorySafety(),
         .enableUpcomingFeature("ExistentialAny"),
